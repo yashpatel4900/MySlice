@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class User {
 //    @Id
-    private String userID;
+    private long userID;
 
     private String name;
     private String email;
@@ -24,7 +24,7 @@ public class User {
     public User() {
     }
 
-    public User(String userID, String name, String email, String role) {
+    public User(long userID, String name, String email, String role) {
         this.userID = userID;
         this.name = name;
         this.email = email;

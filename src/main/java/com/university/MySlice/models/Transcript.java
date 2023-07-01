@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Transcript {
 
-    private int courseID;
+    private long courseID;
     private String courseName;
     private int CourseCredit;
     private Grade grade;
@@ -16,7 +16,7 @@ public class Transcript {
     public Transcript() {
     }
 
-    public Transcript(int courseID, boolean isPass) {
+    public Transcript(long courseID, boolean isPass) {
         this.courseID = courseID;
         this.isPass = isPass;
     }

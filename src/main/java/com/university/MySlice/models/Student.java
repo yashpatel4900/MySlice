@@ -1,5 +1,6 @@
 package com.university.MySlice.models;
 
+import com.university.MySlice.enums.Semester;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,10 +10,11 @@ import java.util.List;
 @Setter
 public class Student extends User {
 
-    private int suid;
+    private long suid;
     private String program;
 
-    private String semester;
+    private Semester semester;
+    private int year;
 
     private float creditCost;
     private int scholarship;
@@ -22,7 +24,7 @@ public class Student extends User {
         super();
     }
 
-    public Student(String userID, String name, String email, String role, int suid) {
+    public Student(long userID, String name, String email, String role, long suid) {
         super(userID, name, email, role);
         this.suid = suid;
     }

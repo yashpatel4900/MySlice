@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class Professor extends User{
 
-    private int professorID;
+    private long professorID;
     private String program;
     private String Office;
     private String Teaching;
@@ -16,7 +16,7 @@ public class Professor extends User{
         super();
     }
 
-    public Professor(String userID, String name, String email, String role, int professorID) {
+    public Professor(long userID, String name, String email, String role, long professorID) {
         super(userID, name, email, role);
         this.professorID = professorID;
     }
