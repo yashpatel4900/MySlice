@@ -3,6 +3,8 @@ package com.university.MySlice.models;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 //@Document("user")
 @Getter
 @Setter
@@ -14,10 +16,13 @@ public class User {
     private String email;
     private String role;
 
-    private Schedule schedule;
+    private List<Schedule> schedule;
 
 //    We are not defining Notification here because no need of it in DB.
 
+
+    public User() {
+    }
 
     public User(String userID, String name, String email, String role) {
         this.userID = userID;
