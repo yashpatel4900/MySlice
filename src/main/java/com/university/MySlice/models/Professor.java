@@ -2,11 +2,15 @@ package com.university.MySlice.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
+@Document(collection="Professor")
 public class Professor extends User{
 
+//    @Id
     private long professorID;
     private String program;
     private String Office;

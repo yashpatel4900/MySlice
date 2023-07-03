@@ -1,15 +1,17 @@
 package com.university.MySlice.models;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
 
-//@Document("user")
 @Getter
 @Setter
+@Document
 public class User {
-//    @Id
+    @Id
     private long userID;
 
     private String name;

@@ -2,13 +2,17 @@ package com.university.MySlice.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Getter
 @Setter
+@Document(collection="Program")
 public class Program {
 
+    @Id
     private long programID;
     private String programName;
     private String department;

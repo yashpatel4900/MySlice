@@ -1,5 +1,6 @@
 package com.university.MySlice.models;
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import com.university.MySlice.enums.Semester;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +10,10 @@ import java.util.List;
 
 @Getter
 @Setter
+@Document(collection="Enrollment")
 public class Enrollment {
+
+    @Id
     private long enrollmentID;
     private long suid;
     private List<Course> courses;
