@@ -1,4 +1,5 @@
 package com.university.MySlice.models;
+import com.university.MySlice.enums.Role;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,14 +10,14 @@ import java.util.List;
 
 @Getter
 @Setter
-@Document
+@Document(collection = "users")
 public class User {
     @Id
     private long userID;
 
     private String name;
     private String email;
-    private String role;
+    private Role role;
 
     private List<Schedule> schedule;
 
@@ -26,7 +27,7 @@ public class User {
     public User() {
     }
 
-    public User(long userID, String name, String email, String role) {
+    public User(long userID, String name, String email, Role role) {
         this.userID = userID;
         this.name = name;
         this.email = email;

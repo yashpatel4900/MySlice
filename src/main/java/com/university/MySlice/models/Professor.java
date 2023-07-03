@@ -1,5 +1,6 @@
 package com.university.MySlice.models;
 
+import com.university.MySlice.enums.Role;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
@@ -20,7 +21,7 @@ public class Professor extends User{
         super();
     }
 
-    public Professor(long userID, String name, String email, String role, long professorID) {
+    public Professor(long userID, String name, String email, Role role, long professorID) {
         super(userID, name, email, role);
         this.professorID = professorID;
     }
