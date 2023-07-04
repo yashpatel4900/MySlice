@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    public UserRepository userRepository;
+    private UserService userService;
+
+    Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping(value = "/save")
-    void test(@RequestBody User user){
+    public void saveUser(@RequestBody User user){
 //        logger.info("Saving Mode.");
-        userRepository.save(user);
-//        userRepository.save(new Student());
-//        userRepository.save(new Professor());
-//        userRepository.save(new Program());
-//        userRepository.save(new Course());
-//        userRepository.save(new Enrollment());
-//        userRepository.save(new Transcript());
+        try{
+            userService.saveUser(user);
+        } catch(Exception e){
+            LOGGER.error(e.getMessage());
+        }
     }
 }
