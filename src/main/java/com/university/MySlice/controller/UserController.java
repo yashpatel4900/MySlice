@@ -2,11 +2,14 @@ package com.university.MySlice.controller;
 
 import com.university.MySlice.models.*;
 import com.university.MySlice.repository.UserRepository;
+import com.university.MySlice.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 
 @RestController()
@@ -26,5 +29,17 @@ public class UserController {
         } catch(Exception e){
             LOGGER.error(e.getMessage());
         }
+    }
+
+//    GET API Request to fetch user by ID
+    @GetMapping(value = "/getByID")
+   public User getUserByID (@RequestParam long id){
+//      findByID was defined by us in userRepository Interface using @Query
+        return userService.getUserById(id);
+    }
+
+    @GetMapping(value = "/findUsersByName")
+    List<User> findUsersByName(@RequestParam String name){
+        return userService.findUsersByName(name);
     }
 }
