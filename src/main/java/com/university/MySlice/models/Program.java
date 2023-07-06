@@ -13,7 +13,7 @@ import java.util.List;
 public class Program {
 
     @Id
-    private long programID;
+    private Long programID;
     private String programName;
     private String department;
     private String advisor;
@@ -26,7 +26,7 @@ public class Program {
     public Program() {
     }
 
-    public Program(long programID, String programName, String department, int creditRequired, int duration, String degreeOffered) {
+    public Program(Long programID, String programName, String department, int creditRequired, int duration, String degreeOffered) {
         this.programID = programID;
         this.programName = programName;
         this.department = department;

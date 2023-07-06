@@ -49,8 +49,5 @@ public class UserService {
                 }
 
                 userRepository.save(user);
-
-            throw new Exception(String.format("User already exists with name %s", user.getName()));
-
         }
 }

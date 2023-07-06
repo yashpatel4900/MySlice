@@ -23,7 +23,7 @@ public class UserController {
     Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping(value = "/save")
-    public void saveUser (@RequestBody User user) throws Exception{
+    public String saveUser (@RequestBody User user) throws Exception{
 //        logger.info("Saving Mode.");
         try{
             userService.saveUser(user);
@@ -31,6 +31,8 @@ public class UserController {
             LOGGER.error(e.getMessage());
             throw e;
         }
+
+        return "User has been created Successfully";
     }
 
 //    GET API Request to fetch user by ID
