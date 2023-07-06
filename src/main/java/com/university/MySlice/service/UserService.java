@@ -1,6 +1,8 @@
 package com.university.MySlice.service;
 
+import com.university.MySlice.exception.RequiredFieldException;
 import com.university.MySlice.repository.UserRepository;
+import com.university.MySlice.utils.RandomIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.university.MySlice.models.User;
@@ -47,7 +49,6 @@ public class UserService {
                 }
 
                 userRepository.save(user);
-            }
 
             throw new Exception(String.format("User already exists with name %s", user.getName()));
 

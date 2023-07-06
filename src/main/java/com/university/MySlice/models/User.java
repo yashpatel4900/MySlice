@@ -13,11 +13,11 @@ import java.util.List;
 @Document(collection = "users")
 public class User {
     @Id
-    private long userID;
+    private Long userID;
     private String name;
     private String email;
     private Role role;
-
+    private Boolean isActive;
     private List<Schedule> schedule;
 
 //    We are not defining Notification here because no need of it in DB.
@@ -26,7 +26,7 @@ public class User {
     public User() {
     }
 
-    public User(long userID, String name, String email, Role role) {
+    public User(Long userID, String name, String email, Role role) {
         this.userID = userID;
         this.name = name;
         this.email = email;
