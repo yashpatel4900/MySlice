@@ -23,11 +23,29 @@ public class UserService {
             return userRepository.findByName(name);
         }
 
-        public User saveUser(User user) throws Exception{
+        public void saveUser(User user) throws Exception{
+//      While saving user we gave a functionality to user that either they can pass ID or we can generate a random id for them
 
-            User existingUser = userRepository.getByName(user.getName());
 
-            if(existingUser == null){
+                if(user.getName() == null){
+                    // Raise Exception
+                    throw new RequiredFieldException("Name is a required field");
+                }
+
+//                If user didnt gave id, we will generate
+                if(user.getUserID() == null){
+//                    Save new user
+                    user.setUserID(RandomIDGenerator.generateRandomId());
+                } else{
+//                    If id given, check same id does not exist
+                    User existingUser = userRepository.findByID(user.getUserID());
+//                    If exist and there is also non-other user with same name, we can save it now
+                    if(existingUser != null && !user.getName().equals(existingUser.getName())){
+                        // Name change, raise exception
+                        throw new Exception("Changing name is not allowed");
+                    }
+                }
+
                 userRepository.save(user);
             }
 
