@@ -20,4 +20,6 @@ public interface UserRepository extends MongoRepository<User, String> {
 
     @Query("{'name' : ?0}")
     User getByName(String name);
+
+    Page<User> findAll(Pageable pageRequest);
 }

@@ -52,4 +52,8 @@ public class UserService {
 
                 userRepository.save(user);
         }
+
+    public Page<User> getAllUsers(Pageable pageRequest) {
+            return userRepository.findAll(pageRequest);
+    }
 }
