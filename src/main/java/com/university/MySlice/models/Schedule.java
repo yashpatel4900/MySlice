@@ -1,8 +1,14 @@
 package com.university.MySlice.models;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.university.MySlice.enums.WeekDay;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
 public class Schedule {
     private WeekDay weekDay;
     private List<Slot> slots;
@@ -10,23 +16,6 @@ public class Schedule {
 //    Constructor
     public Schedule(WeekDay weekDay, List<Slot> slots) {
         this.weekDay = weekDay;
-        this.slots = slots;
-    }
-
-//    Getter Setter
-    public WeekDay getWeekDay() {
-        return weekDay;
-    }
-
-    public void setWeekDay(WeekDay weekDay) {
-        this.weekDay = weekDay;
-    }
-
-    public List<Slot> getSlots() {
-        return slots;
-    }
-
-    public void setSlots(List<Slot> slots) {
         this.slots = slots;
     }
 }

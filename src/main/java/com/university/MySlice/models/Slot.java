@@ -1,21 +1,20 @@
 package com.university.MySlice.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Time;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Getter
+@Setter
 public class Slot {
 
     private Time startTime;
     private Time endTime;
 
     private String location;
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 
     //    Empty Constructor for no slot of the day
     public Slot() {
@@ -27,19 +26,4 @@ public class Slot {
         this.endTime = endTime;
     }
 
-    public Time getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
-    }
-
-    public Time getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
-    }
 }

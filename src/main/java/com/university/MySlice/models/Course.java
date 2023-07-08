@@ -13,19 +13,19 @@ import java.util.List;
 public class Course {
 
     @Id
-    private long CourseID;
+    private Long courseID;
     private String courseName;
-    private String Instructor;
+    private String instructor;
     private List<Schedule> schedule;
-    private int capacity;
+    private Integer capacity;
     private String description;
-    private int credit;
+    private Integer credit;
 
     public Course() {
     }
 
-    public Course(long courseID, String courseName, int credit) {
-        CourseID = courseID;
+    public Course(Long courseID, String courseName, Integer credit) {
+        this.courseID = courseID;
         this.courseName = courseName;
         this.credit = credit;
     }

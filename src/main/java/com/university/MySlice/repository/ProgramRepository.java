@@ -12,4 +12,9 @@ public interface ProgramRepository extends MongoRepository<Program, String> {
 
     @Query("{ '_id' : ?0 }")
     Program findById(Long programID);
+
+    @Query("{'advisor' : ?0 }")
+    Program findByAdvisorName(String advisor);
+
+
 }
