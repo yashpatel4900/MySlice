@@ -31,7 +31,7 @@ public class CourseService {
             course.setCourseID(RandomIDGenerator.generateRandomId());
         } else {
 //                    If id given, check same id does not exist
-            Course existingCourse = courseRepository.findByID(course.getCourseID());
+            Course existingCourse = courseRepository.findById(course.getCourseID());
 //                    If exist and there is also non-other user with same name, we can save it now
             if (existingCourse != null && !course.getCourseName().equals(existingCourse.getCourseName())) {
                 // Name change, raise exception
@@ -43,6 +43,6 @@ public class CourseService {
     }
 
     public Course getCourseByID(Long courseID) {
-        return courseRepository.findByID(courseID);
+        return courseRepository.findById(courseID);
     }
 }

@@ -12,6 +12,6 @@ import java.util.List;
 public interface CourseRepository extends MongoRepository<Course, String> {
 
     @Query("{ '_id' : ?0 }")
-    Course findByID(Long courseID);
+    Course findById(Long courseID);
 
 }

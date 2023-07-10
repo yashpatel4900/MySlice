@@ -1,8 +1,7 @@
 package com.university.MySlice.controller;
 
-import com.university.MySlice.exception.RequiredFieldException;
+
 import com.university.MySlice.models.*;
-import com.university.MySlice.repository.UserRepository;
 import com.university.MySlice.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

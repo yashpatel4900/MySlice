@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 @Service
 public class ProgramService {
@@ -31,7 +30,7 @@ public class ProgramService {
         Program existingProgram = programRepository.findByName(program.getProgramName());
 
         if(existingProgram!=null){
-            throw new Exception("Same Program name Exists in DataBase");
+            throw new RequiredFieldException("Same Program name Exists in DataBase");
         }
 
 //        Handling ID
@@ -40,7 +39,7 @@ public class ProgramService {
         } else {
             Program existingProgramByID = programRepository.findById(program.getProgramID());
             if(existingProgramByID!=null && !program.getProgramName().equals(existingProgramByID.getProgramName())){
-                throw new Exception("Changing name is not allowed");
+                throw new RequiredFieldException("Changing name is not allowed");
             }
         }
 
@@ -60,11 +59,6 @@ public class ProgramService {
 
 
         programRepository.save(program);
-    }
-
-    public Program getProgramByAdvisorName(String advisor) {
-
-        return programRepository.findByAdvisorName("Yash");
     }
 
 
