@@ -17,13 +17,13 @@ import java.util.List;
 public class Enrollment {
 
     @Id
-    private long enrollmentID;
-    private long suid;
-    private List<Course> courses;
+    private Long enrollmentID;
+    private Long suid;
+    private Course course;
     private Date enrollmentDate;
     private Semester enrollmentSemester;
-    private int year;
-    private String status;
+    private Integer year;
+    private Status status;
 
     public Enrollment(Long enrollmentID, Long suid, Course course, Date enrollmentDate, Semester enrollmentSemester, int year, Status status) {
         this.enrollmentID = enrollmentID;
