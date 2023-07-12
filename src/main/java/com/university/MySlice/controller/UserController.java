@@ -1,7 +1,9 @@
 package com.university.MySlice.controller;
 
 
+import com.university.MySlice.exception.RequiredFieldException;
 import com.university.MySlice.models.*;
+import com.university.MySlice.service.EnrollmentService;
 import com.university.MySlice.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,4 +60,16 @@ public class UserController {
         return ResponseEntity.ok(userPage);
 
     }
+
+    @PutMapping(value = "update/schedule")
+    public List<Schedule> getUserSchedule(@RequestParam Long userId) {
+        try {
+            return userService.getSchedule(userId);
+        } catch (Exception e) {
+            throw new RequiredFieldException((e.getMessage()));
+        }
+
+    }
+
+
 }

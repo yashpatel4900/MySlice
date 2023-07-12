@@ -1,6 +1,11 @@
 package com.university.MySlice.service;
 
+import com.university.MySlice.enums.Status;
 import com.university.MySlice.exception.RequiredFieldException;
+import com.university.MySlice.models.Course;
+import com.university.MySlice.models.Enrollment;
+import com.university.MySlice.models.Schedule;
+import com.university.MySlice.repository.EnrollmentRepository;
 import com.university.MySlice.repository.UserRepository;
 import com.university.MySlice.utils.RandomIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.university.MySlice.models.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,6 +22,10 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    EnrollmentService enrollmentService;
+    @Autowired
+    CourseService courseService;
 
 //        On Autowiring of userRepository, either we can use methods provided by MongoDB or
 //        we can create new methods in userRepository and use it.
@@ -56,4 +66,44 @@ public class UserService {
     public Page<User> getAllUsers(Pageable pageRequest) {
             return userRepository.findAll(pageRequest);
     }
+
+    public List<Schedule> getSchedule(Long userId) throws Exception {
+        List<Enrollment> enrollmentList = enrollmentService.getEnrollmentsByStudentId(userId);
+        User user = getUserById(userId);
+        List<Schedule> fetchedSchedules = new ArrayList<>();
+
+        for (Enrollment enrollment : enrollmentList) {
+            if (enrollment.getStatus() == Status.ACTIVE) {
+                Long courseId = enrollment.getCourse().getCourseID();
+                Course course = courseService.getCourseByID(courseId);
+
+                if (course != null) {
+                    List<Schedule> courseSchedules = course.getSchedule();
+                    fetchedSchedules.addAll(courseSchedules);
+                }
+            }
+        }
+
+        user.setSchedule(fetchedSchedules);
+        saveUser(user);
+        return user.getSchedule();
+    }
+
+//    public List<Schedule> getSchedule(Long userId) {
+//        List<Enrollment> enrollmentList = enrollmentService.getEnrollmentsByStudentId(userId);
+//        User user = userRepository.findByID(userId);
+//        List<Schedule> fetchedSchedules = new ArrayList<>();
+//        for(Enrollment enrollment: enrollmentList){
+//            if(enrollment.getStatus() == Status.ACTIVE){
+//                Long courseId = enrollment.getCourse().getCourseID();
+//                List<Schedule> fetchedSchedule = courseService.getCourseByID(courseId).getSchedule();
+//
+//                fetchedSchedules.addAll(fetchedSchedule);
+//
+//            }
+//        }
+//
+//        user.setSchedule(fetchedSchedules);
+//        return user.getSchedule();
+//    }
 }
